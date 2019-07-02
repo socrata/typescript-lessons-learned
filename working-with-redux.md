@@ -69,7 +69,7 @@ interface FlashMessageState {
   visible: boolean;  
 }
 
-const flashMessage = (state: FlashMessageeState = { visible: false }, action: FlashAction): FlashMessageState => {
+const flashMessage = (state: FlashMessageState = { visible: false }, action: FlashAction): FlashMessageState => {
   switch (action.type) {
     case FlashActionType.showFlashMessage:
       return {
@@ -90,7 +90,7 @@ const flashMessage = (state: FlashMessageeState = { visible: false }, action: Fl
 
 ```
 
-Because of the types we defined in our actions creator file, the compiler now has enough information to infer the type ins each branch of this switch statement. It knows not to complain that we are accessing `action.message` in our first case-statement even though that value is not present on all `FlashActions`.  
+Because of the types we defined in our actions creator file, the compiler now has enough information to infer the type in each branch of this switch statement. It knows not to complain that we are accessing `action.message` in our first case-statement even though that value is not present on all `FlashActions`.
 
 ## React-Redux Thunks
 
@@ -184,7 +184,7 @@ const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
 export default connect(mapStateToProps, mapDispatchToProps)(FlashMessage);
 ```
 
-And since the props of the connect  `FlashMessage` component are just the return values of the two functions passed to `connect`, we can use TypeScript intersection types to reuse the types we've defined in our connector:
+And since the props of the connected `FlashMessage` component are just the return values of the two functions passed to `connect`, we can use TypeScript intersection types to reuse the types we've defined in our connector:
 
 ```typescript
 import { StateProps, DispatchProps } from '../containers/FlashMessage';
