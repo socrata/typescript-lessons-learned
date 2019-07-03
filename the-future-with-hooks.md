@@ -44,7 +44,7 @@ export const buttonClicked = (name: string, event: React.MouseEvent<HTMLButtonEl
 export const getButtonDisabled = (state: ApplicationState): boolean => state.buttonDisabled;
 ```
 
-## WITHOUT hooks
+## WITHOUT hooks (React 15, Redux 5.0.6)
 
 Without hooks, we use redux's `connect` function along with a `mapStateToProps` and `mapDispatchToProps`; we have to define these types before doing anything.
 
@@ -97,7 +97,7 @@ export default connect<StateProps, DispatchProps, OwnProps>(
 )(SomeButton);
 ```
 
-## WITH hooks
+## WITH hooks (React 16+, Redux 7.1.0+)
 
 With hooks, we don't need to use `connect` anymore and since our selectors etc. are already typed, we don't need to re-define the types at all.
 
