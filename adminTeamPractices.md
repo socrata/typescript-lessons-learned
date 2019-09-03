@@ -4,7 +4,7 @@
 
 ### Avoid `any`
  Casting something to `any` has several pitfalls and should be avoided in general.
- 
+
  Once something is cast as `any` TypeScript safety for code interacting with the `any` object is gone.
 
 ### Types and jsdocs integration
@@ -46,35 +46,6 @@ Performing the above allows your IDE to pull the types with their definitions to
 ![](img/ts_and_jsdocs.png)
 _Example of hovering over `value` for the `DropdownWithLabel` component in Visual Studio Code_
 
-### actions and return types
-
-Recommend to use [`typesafe-actions`](https://github.com/piotrwitek/typesafe-actions#motivation) and generate return types for all actions.
-
-```typescript
-export type organizationActionType =
-  | fetchOrgAction
-  | fetchOrgSuccessAction
-  | fetchOrgFailedAction
-  | initialLoadAction;
-```
-
-which can then be passed to the reducer.
-
-```typescript
-export default (state = defaultState, action: organizationActionType) => {
-  switch (action.type) {
-    case actions.FETCH_ORG_SUCCESS:
-      return fetchOrgSuccess(state, action.payload);
-    case actions.FETCH_ORG_FAILED:
-      return fetchOrgFailure(state, action.payload);
-    default:
-      return state;
-  }
-};
-```
-
-Example actions file (from Org Dashboard): https://github.com/socrata/platform-ui/blob/master/frontend/public/javascripts/organizationDashboard/actions/OrganizationActions.ts
-
 ### selectors and return types
 
 Selectors like most functions should have explicit return types.
@@ -115,7 +86,7 @@ We can also look into using libraries to do this: https://github.com/gcanti/io-t
 A central `types.ts` file for all of the projects types is recommended.
 
 ### Explicit return types on selectors and functions (things beside sagas, components, etc..)
- 
+
  Explicitly setting the return type of ordinary functions and specifically selectors is useful to test your assumptions.
 
 ## Thoughts
